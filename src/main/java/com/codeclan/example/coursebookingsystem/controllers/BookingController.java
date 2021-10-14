@@ -5,10 +5,7 @@ import com.codeclan.example.coursebookingsystem.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +23,12 @@ class BookingController {
     @GetMapping(value = "/bookings/{id}")
     public ResponseEntity getBooking(@PathVariable Long id){
         return new ResponseEntity<>(bookingRepository.findById(id), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/bookings")
+    public ResponseEntity<Booking> postBooking(@RequestBody Booking booking){
+        bookingRepository.save(booking);
+        return new ResponseEntity<>(booking, HttpStatus.CREATED);
     }
 
 }

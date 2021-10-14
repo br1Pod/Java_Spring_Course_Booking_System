@@ -6,9 +6,7 @@ import com.codeclan.example.coursebookingsystem.repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,7 +26,10 @@ class CourseController {
         return new ResponseEntity<>(courseRepository.findById(id), HttpStatus.OK);
     }
 
-
-
+    @PostMapping(value = "/courses")
+    public ResponseEntity<Course> postCourse(@RequestBody Course course){
+        courseRepository.save(course);
+        return new ResponseEntity<>(course, HttpStatus.CREATED);
+    }
 
 }

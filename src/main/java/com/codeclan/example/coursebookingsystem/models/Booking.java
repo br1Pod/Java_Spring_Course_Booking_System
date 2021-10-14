@@ -26,13 +26,13 @@ public class Booking {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    public Booking() {
-    }
-
     public Booking(String date, Course course, Customer customer) {
         this.date = date;
         this.course = course;
         this.customer = customer;
+    }
+
+    public Booking() {
     }
 
     public Long getId() {

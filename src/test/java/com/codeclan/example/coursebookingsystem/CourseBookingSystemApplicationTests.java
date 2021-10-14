@@ -10,4 +10,5 @@ class CourseBookingSystemApplicationTests {
 	void contextLoads() {
 	}
 
+
 }

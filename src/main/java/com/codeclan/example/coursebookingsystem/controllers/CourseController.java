@@ -32,4 +32,7 @@ class CourseController {
         return new ResponseEntity<>(course, HttpStatus.CREATED);
     }
 
+    // Get all Courses for a given Rating
+
+
 }
